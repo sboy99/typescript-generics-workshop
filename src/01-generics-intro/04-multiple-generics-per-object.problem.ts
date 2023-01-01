@@ -1,7 +1,8 @@
 import { expect, it } from "vitest";
 import { Equal, Expect } from "../helpers/type-utils";
 
-const returnBothOfWhatIPassIn = (params: { a: unknown; b: unknown }) => {
+// Learning: The parameters does not matter what matters is with whom we are assigning. Here T1 and T2 gets initalized with type of a and b respectively, First I need to focus on argument Types.
+const returnBothOfWhatIPassIn = <T1, T2>(params: { a: T1; b: T2 }) => {
   return {
     first: params.a,
     second: params.b,
