@@ -1,7 +1,12 @@
 import { expect, it } from "vitest";
 import { Equal, Expect } from "../helpers/type-utils";
 
-export const concatenateFirstNameAndLastName = (user: unknown) => {
+// Learning: Here T extends {...} represent the type T mush have property [...]. If other property is passed is also allowed, This I can think as a dynamic Type with some must have property.
+export const concatenateFirstNameAndLastName = <
+  T extends { firstName: string; lastName: string }
+>(
+  user: T
+) => {
   return {
     ...user,
     fullName: `${user.firstName} ${user.lastName}`,
@@ -32,7 +37,7 @@ it("Should add fullName to an object which only contains firstName and lastName"
         typeof newUsers,
         Array<{ firstName: string; lastName: string } & { fullName: string }>
       >
-    >,
+    >
   ];
 });
 
@@ -66,7 +71,7 @@ it("Should retain other properties passed in", () => {
           }
         >
       >
-    >,
+    >
   ];
 });
 
@@ -79,6 +84,6 @@ it("Should fail when the object passed in does not contain firstName", () => {
 
   const newUsers = users.map(
     // @ts-expect-error
-    concatenateFirstNameAndLastName,
+    concatenateFirstNameAndLastName
   );
 });
