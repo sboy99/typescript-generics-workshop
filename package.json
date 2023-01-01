@@ -13,9 +13,9 @@
   },
   "scripts": {
     "exercise": "node scripts/exercise.js",
-    "e": "npm run exercise",
+    "e": "yarn exercise",
     "solution": "cross-env SOLUTION=true node scripts/exercise.js",
-    "s": "npm run solution"
+    "s": "yarn solution"
   },
   "dependencies": {
     "cross-env": "^7.0.3",
