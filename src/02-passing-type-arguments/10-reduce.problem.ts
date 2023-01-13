@@ -10,7 +10,8 @@ const array = [
   },
 ];
 
-const obj = array.reduce((accum, item) => {
+// leaning: Reduce should pass accumulator Type and that can be done using Record so whenever its time to define object type use Record
+const obj = array.reduce<Record<string, { name: string }>>((accum, item) => {
   accum[item.name] = item;
   return accum;
 }, {});
